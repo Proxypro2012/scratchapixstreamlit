@@ -1,0 +1,5 @@
+requests                                                         
+cv2                                                              
+numpy                                                    
+streamlit                                               
+os   
