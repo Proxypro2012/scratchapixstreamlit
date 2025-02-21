@@ -97,74 +97,74 @@ with r1col2:
 
 fetch_username = st.sidebar.text_input("Enter a Scratchers username: ")
 if st.sidebar.button("Fetch Info"):
-# Sidebar Input
-fetch_username = st.sidebar.text_input("Enter a Scratcher's username:")
-if st.sidebar.button("Fetch Info") and fetch_username:
-    data = get_user_info(fetch_username)
-    print(data)
-
-    username = data["username"]
-    id = data["id"]
-    scratchteam = data["scratchteam"]
-    status = data['profile']["status"]
-    bio = data['profile']["bio"]
-
-
-    if scratchteam == True:
-        scratchteam = "Yes"
-    if data:  # Check if data is valid before accessing keys
-        try:
-            username = data.get("username", "N/A")
-            user_id = data.get("id", "N/A")
-            scratchteam = "Yes" if data.get("scratchteam", False) else "No"
-            profile = data.get("profile", {})
-
-            status = profile.get("status", "No status available")
-            bio = profile.get("bio", "No bio available")
-
-            with r2col2:
-                st.write(f"**Scratch Team:** {scratchteam}")
-                st.write(f"**Username:** {username}")
-                st.write(f"**User ID:** {user_id}")
-
-            with r2col3:
-                st.write(f"**Status:** {status}")
-                st.write(f"**Bio:** {bio}")
-
-            # Profile Picture
-            source_url = f"https://cdn2.scratch.mit.edu/get_image/user/{user_id}_200x200.png?v="
-            with r3col2:
-                st.header("Profile Picture")
-            with r4col2:
-                st.image(source_url, width=200)
-
-        except KeyError as e:
-            st.error(f"Missing expected data: {e}")
-    else:
-        scratchteam = "No"
-
-
-
-
-    with r2col2:
-        st.write(f"Scratch Team: {scratchteam}")
-        st.write(f"Username: {username}")
-        st.write(f"ID: {id}")
-
-    with r2col3:
-        st.write(f"Status: {status}")
-        st.write(f"Bio: {bio}")
-
-
-    source_url = f"https://cdn2.scratch.mit.edu/get_image/user/{id}_200x200.png?v="
-
-    with r3col2:
-        st.header("Profile Picture")
-    with r4col2:
-        st.image(source_url, width=200)
-
+    # Sidebar Input
+    fetch_username = st.sidebar.text_input("Enter a Scratcher's username:")
+    if st.sidebar.button("Fetch Info") and fetch_username:
+        data = get_user_info(fetch_username)
+        print(data)
     
-
-
-
-        st.warning("No data found for this user. Check the username and try again.")
+        username = data["username"]
+        id = data["id"]
+        scratchteam = data["scratchteam"]
+        status = data['profile']["status"]
+        bio = data['profile']["bio"]
+    
+    
+        if scratchteam == True:
+            scratchteam = "Yes"
+        if data:  # Check if data is valid before accessing keys
+            try:
+                username = data.get("username", "N/A")
+                user_id = data.get("id", "N/A")
+                scratchteam = "Yes" if data.get("scratchteam", False) else "No"
+                profile = data.get("profile", {})
+    
+                status = profile.get("status", "No status available")
+                bio = profile.get("bio", "No bio available")
+    
+                with r2col2:
+                    st.write(f"**Scratch Team:** {scratchteam}")
+                    st.write(f"**Username:** {username}")
+                    st.write(f"**User ID:** {user_id}")
+    
+                with r2col3:
+                    st.write(f"**Status:** {status}")
+                    st.write(f"**Bio:** {bio}")
+    
+                # Profile Picture
+                source_url = f"https://cdn2.scratch.mit.edu/get_image/user/{user_id}_200x200.png?v="
+                with r3col2:
+                    st.header("Profile Picture")
+                with r4col2:
+                    st.image(source_url, width=200)
+    
+            except KeyError as e:
+                st.error(f"Missing expected data: {e}")
+        else:
+            scratchteam = "No"
+    
+    
+    
+    
+        with r2col2:
+            st.write(f"Scratch Team: {scratchteam}")
+            st.write(f"Username: {username}")
+            st.write(f"ID: {id}")
+    
+        with r2col3:
+            st.write(f"Status: {status}")
+            st.write(f"Bio: {bio}")
+    
+    
+        source_url = f"https://cdn2.scratch.mit.edu/get_image/user/{id}_200x200.png?v="
+    
+        with r3col2:
+            st.header("Profile Picture")
+        with r4col2:
+            st.image(source_url, width=200)
+    
+        
+    
+    
+    
+            st.warning("No data found for this user. Check the username and try again.")
