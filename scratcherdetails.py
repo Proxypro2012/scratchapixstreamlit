@@ -121,15 +121,7 @@ if st.sidebar.button("Fetch Info"):
     with r4col2:
         st.image(source_url, width=200)
 
-    response = requests.get(source_url)
-    img_array = np.asarray(bytearray(response.content), dtype=np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-
-    cv2.imshow("Image", img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
-
+    
 
 
 
