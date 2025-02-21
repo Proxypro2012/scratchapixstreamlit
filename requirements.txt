@@ -1,5 +1,4 @@
-requests                                                         
-cv2                                                              
+requests                                                                                                         
 numpy                                                    
 streamlit                                               
 os   
