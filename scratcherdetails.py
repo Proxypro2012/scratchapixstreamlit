@@ -7,7 +7,7 @@ import streamlit as st
 
 @st.cache_data(ttl=300)  # Cache for 5 minutes to reduce API calls
 def get_user_info(username):
-    url = f"https://api.scratch.mit.edu/users/{username}"
+    url = f"https://corsproxy.io/?api.scratch.mit.edu/users/{username}"
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -61,7 +61,7 @@ if st.sidebar.button("Fetch Info") and fetch_username:
                 st.write(f"**Bio:** {bio}")
 
             # Profile Picture
-            source_url = f"https://cdn2.scratch.mit.edu/get_image/user/{user_id}_200x200.png?v="
+            source_url = f"https://corsproxy.io/?cdn2.scratch.mit.edu/get_image/user/{user_id}_200x200.png?v="
             with r3col2:
                 st.header("Profile Picture")
             with r4col2:
